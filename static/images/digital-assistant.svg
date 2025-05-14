@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <style>
+    .st0{fill:#1a73e8;}
+    .st1{fill:#4285f4;}
+    .st2{fill:#e3f2fd;}
+    .st3{fill:#ffffff;}
+    .st4{fill:#bbdefb;}
+  </style>
+  <rect class="st2" width="400" height="300" rx="20" ry="20"/>
+  <circle class="st1" cx="200" cy="100" r="60"/>
+  <rect class="st0" x="120" y="180" width="160" height="80" rx="10" ry="10"/>
+  <circle class="st3" cx="170" cy="90" r="15"/>
+  <circle class="st3" cx="230" cy="90" r="15"/>
+  <path class="st3" d="M170,120 Q200,150 230,120" stroke-width="5" stroke="#ffffff" fill="none"/>
+  <rect class="st4" x="140" y="200" width="120" height="10" rx="5" ry="5"/>
+  <rect class="st4" x="140" y="220" width="120" height="10" rx="5" ry="5"/>
+  <rect class="st4" x="140" y="240" width="120" height="10" rx="5" ry="5"/>
+</svg>
