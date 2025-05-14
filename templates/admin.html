@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tools Assistant - Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-header h1 {
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+        
+        .admin-section {
+            margin-bottom: 30px;
+        }
+        
+        .admin-section h2 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .toggle-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .toggle-label {
+            margin-left: 10px;
+        }
+        
+        .save-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .save-btn:hover {
+            background-color: #1557b0;
+        }
+        
+        .status-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Digital Tools Assistant</h1>
+            <p>Admin Configuration Panel</p>
+        </div>
+        
+        <div class="admin-section">
+            <h2>AI Integration Settings</h2>
+            <form id="config-form">
+                <div class="form-group">
+                    <label for="api-key">OpenRouter API Key (for DeepSeek AI):</label>
+                    <input type="text" id="api-key" value="{{ config.openrouter_api_key }}" placeholder="Enter your OpenRouter API key">
+                    <p class="help-text">Get your API key from <a href="https://openrouter.ai" target="_blank">openrouter.ai</a></p>
+                </div>
+                
+                <div class="form-group">
+                    <div class="toggle-container">
+                        <label class="switch">
+                            <input type="checkbox" id="ai-enabled" {% if config.ai_enabled %}checked{% endif %}>
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label">Enable AI responses for all users</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="save-btn">Save Configuration</button>
+            </form>
+            
+            <div id="status-message" class="status-message"></div>
+        </div>
+        
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const configForm = document.getElementById('config-form');
+            const apiKeyInput = document.getElementById('api-key');
+            const aiEnabledToggle = document.getElementById('ai-enabled');
+            const statusMessage = document.getElementById('status-message');
+            
+            configForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const apiKey = apiKeyInput.value.trim();
+                const aiEnabled = aiEnabledToggle.checked;
+                
+                // Send configuration to server
+                fetch('/api/admin/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        api_key: apiKey,
+                        ai_enabled: aiEnabled
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        showStatusMessage('Configuration saved successfully!', 'success');
+                    } else {
+                        showStatusMessage('Error saving configuration.', 'error');
+                    }
+                })
+                .catch(error => {
+                    showStatusMessage('Error: ' + error.message, 'error');
+                });
+            });
+            
+            function showStatusMessage(message, type) {
+                statusMessage.textContent = message;
+                statusMessage.className = 'status-message ' + type;
+                statusMessage.style.display = 'block';
+                
+                // Hide message after 3 seconds
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
