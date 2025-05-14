@@ -1,0 +1,22 @@
+{
+    "whatsapp": {
+        "What is WhatsApp?": "WhatsApp is a free messaging app owned by Meta that allows you to send messages, make voice and video calls, and share media with other users worldwide.",
+        "How do I send a photo on WhatsApp?": "To send a photo on WhatsApp: 1) Open a chat, 2) Tap the attachment icon (paperclip or +), 3) Select 'Gallery' or 'Camera', 4) Choose or take a photo, 5) Add a caption if desired, 6) Tap send.",
+        "How do I make a video call on WhatsApp?": "To make a video call: 1) Open the chat with the person you want to call, 2) Tap the video call icon in the top right corner, 3) Wait for them to answer."
+    },
+    "paytm": {
+        "What is Paytm?": "Paytm is an Indian digital payment and financial services company that allows you to make payments, transfer money, pay bills, and shop online.",
+        "How do I add money to Paytm wallet?": "To add money to Paytm wallet: 1) Open Paytm app, 2) Tap on your profile or 'Balance', 3) Select 'Add Money', 4) Enter amount, 5) Choose payment method, 6) Complete the transaction.",
+        "How do I pay using Paytm QR code?": "To pay using Paytm QR code: 1) Open Paytm app, 2) Tap 'Scan' at the bottom, 3) Point your camera at the merchant's QR code, 4) Enter amount, 5) Tap 'Pay'."
+    },
+    "googlemaps": {
+        "How do I find directions on Google Maps?": "To find directions on Google Maps: 1) Open Google Maps app, 2) Tap on the 'Directions' icon, 3) Enter your destination and starting point, 4) Choose your mode of transportation (car, public transit, walking), 5) Tap 'Start' to begin navigation.",
+        "How do I save a location on Google Maps?": "To save a location on Google Maps: 1) Search for the location, 2) Tap on the location name at the bottom, 3) Tap 'Save', 4) Choose a list to save it to (Favorites, Want to go, etc.).",
+        "How do I share my location on Google Maps?": "To share your location: 1) Tap on your profile icon, 2) Select 'Location sharing', 3) Tap 'Share location', 4) Choose how long to share and with whom, 5) Tap 'Share'."
+    },
+    "googlepay": {
+        "What is Google Pay?": "Google Pay is a digital wallet and online payment system developed by Google that allows you to make payments, send money to friends, and store payment information securely.",
+        "How do I set up Google Pay?": "To set up Google Pay: 1) Download the Google Pay app, 2) Sign in with your Google account, 3) Add a payment method (credit/debit card or bank account), 4) Set up a PIN or biometric authentication.",
+        "How do I send money using Google Pay?": "To send money: 1) Open Google Pay app, 2) Tap 'Pay' or 'New payment', 3) Enter recipient's phone number or select from contacts, 4) Enter amount, 5) Add a note (optional), 6) Tap 'Pay'."
+    }
+}
