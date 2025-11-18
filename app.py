@@ -72,14 +72,11 @@ def query():
     
     print(f"Query received: '{user_query}', AI enabled: {use_ai}")
     
-    # Load FAQs
     faqs = load_faqs()
     
-    # Search for matching FAQs
     response = search_faqs(user_query, faqs)
     
     if not response:
-        # If no FAQ match, try AI response (if enabled)
         if use_ai and config['ai_enabled']:
             try:
                 print(f"Using AI for response. API key present: {bool(config['openrouter_api_key'])}")
@@ -97,7 +94,6 @@ def query():
 @app.route('/api/admin/config', methods=['POST'])
 def update_config():
     """Admin endpoint to update configuration"""
-    # In a real application, you would add authentication here
     data = request.json
     
     if 'api_key' in data:
@@ -106,7 +102,6 @@ def update_config():
     if 'ai_enabled' in data:
         config['ai_enabled'] = data['ai_enabled']
     
-    # Save updated config
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config, f, indent=4)
     
@@ -121,13 +116,11 @@ def search_faqs(query, faqs):
     # Convert query to lowercase for case-insensitive matching
     query = query.lower()
     
-    # Check for exact matches in FAQs
     for app, app_faqs in faqs.items():
         for question, answer in app_faqs.items():
             if query in question.lower():
                 return answer
     
-    # Check for keyword matches
     keywords = {
         "whatsapp": ["whatsapp", "message", "chat", "call", "video call", "voice call", "status", "photo", "image"],
         "paytm": ["paytm", "payment", "wallet", "money", "transfer", "bill", "recharge", "qr", "scan"],
