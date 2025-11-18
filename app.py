@@ -27,13 +27,11 @@ def load_config():
 
 config = load_config()
 
-# Load FAQ data
 def load_faqs():
     try:
         with open('data/faqs.json', 'r') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        # Return default FAQs if file doesn't exist or is invalid
         return {
             "whatsapp": {
                 "What is WhatsApp?": "WhatsApp is a free messaging app owned by Meta that allows you to send messages, make voice and video calls, and share media with other users worldwide.",
@@ -57,7 +55,6 @@ def load_faqs():
             }
         }
 
-# Create data directory and faqs.json if they don't exist
 os.makedirs('data', exist_ok=True)
 if not os.path.exists('data/faqs.json'):
     with open('data/faqs.json', 'w') as f:
