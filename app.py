@@ -5,14 +5,13 @@ import requests
 
 app = Flask(__name__)
 
-# Configuration
 CONFIG_FILE = 'config.json'
 
 def load_config():
     """Load configuration from config file or create with defaults if it doesn't exist"""
     default_config = {
-        "openrouter_api_key": "",  # Admin will set this
-        "ai_enabled": True  # Whether AI integration is enabled by default
+        "openrouter_api_key": "",  
+        "ai_enabled": True  
     }
     
     if os.path.exists(CONFIG_FILE):
@@ -26,7 +25,6 @@ def load_config():
             json.dump(default_config, f, indent=4)
         return default_config
 
-# Load configuration
 config = load_config()
 
 # Load FAQ data
